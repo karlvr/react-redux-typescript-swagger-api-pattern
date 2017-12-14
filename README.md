@@ -19,10 +19,10 @@ The folder / file layout this pattern uses is:
 
 * [react](http://reactjs.org)
 * [redux](https://redux.js.org)
-* [react-redux](https://github.com/reactjs/react-redux)
-* [typescript-fsa](https://github.com/aikoven/typescript-fsa)
-* [typescript-fsa-reducers](https://github.com/dphilipson/typescript-fsa-reducers)
-* [redux-devtools-extension](http://extension.remotedev.io)
+* [react-redux](https://github.com/reactjs/react-redux) (connects React and Redux)
+* [typescript-fsa](https://github.com/aikoven/typescript-fsa) (type-safe creators for flux standard actions)
+* [typescript-fsa-reducers](https://github.com/dphilipson/typescript-fsa-reducers) (type-safe reducers for flux standard actions)
+* [redux-devtools-extension](http://extension.remotedev.io) (debug Redux)
 
 ## Setup
 
