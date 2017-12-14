@@ -36,6 +36,12 @@ npm start
 
 This project was setup using [create-react-app](https://github.com/facebookincubator/create-react-app). You can setup your own project using the commands below.
 
+Install `create-react-app`:
+
+```
+npm install -g create-react-app
+```
+
 Create the project using `create-react-app`:
 
 ```
