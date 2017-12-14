@@ -21,4 +21,4 @@ export interface ExampleWithMoreTypesActionPayload {
     value: string;
 }
 export type ExampleWithMoreTypesAction = Action<ExampleWithMoreTypesActionPayload>;
-export const exampleWithMoreTypesAction = actionCreator<ExampleWithMoreTypesActionPayload>('EXAMPLE');
+export const exampleWithMoreTypesAction = actionCreator<ExampleWithMoreTypesActionPayload>('EXAMPLE_MORE_TYPES');
