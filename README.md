@@ -23,7 +23,7 @@ This pattern includes example templates for:
 
 ## Setup
 
-This project was setup using `create-react-app`. You can reproduce this setup using the commands below.
+This project was setup using [create-react-app](https://github.com/facebookincubator/create-react-app). You can reproduce this setup using the commands below.
 
 Create the project using `create-react-app`:
 
