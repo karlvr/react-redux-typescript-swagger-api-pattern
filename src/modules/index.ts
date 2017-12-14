@@ -2,7 +2,7 @@ import { createStore, combineReducers, compose } from 'redux';
 import { devToolsEnhancer } from 'redux-devtools-extension/logOnlyInProduction';
 
 /* Import reducers from our modules */
-import * as template from '../modules/template/reducers';
+import * as template from '../modules/template/reducer';
 // import * as another from '../modules/another/reducers';
 
 /**
