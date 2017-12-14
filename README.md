@@ -1,6 +1,6 @@
 # React + Redux + Typescript pattern
 
-This is a pattern for using React with Redux in Typescript. This includes type-safety for FSA (Flux standard actions) at the action creation and in the reducer.
+This is a pattern for using React with Redux in Typescript. This includes type-safety for FSA ([Flux standard actions](https://github.com/acdlite/flux-standard-action)) at the action creation and in the reducer.
 
 React Components are wrapped in a Container that connects the Component to Redux. Interfaces are declared for the component's Props in the Container; split into `Props` and `Actions` to separate properties and action callbacks.
 
