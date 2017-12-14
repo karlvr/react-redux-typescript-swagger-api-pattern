@@ -4,13 +4,16 @@ This is a pattern for using React with Redux in Typescript. This includes type-s
 
 React Components are wrapped in a Container that connects the Component to Redux. Interfaces are declared for the component's Props in the Container; split into `Props` and `Actions` to separate properties and action callbacks.
 
-This pattern includes example templates for:
+### Layout
 
-* Module `modules/template`
-  * React Component `modules/template/components/example.tsx`
-  * React Component Container `modules/template/container/example.ts`
-  * Redux Actions `modules/template/actions.ts`
-  * Redux Reducers `modules/template/reducers.ts`
+The folder / file layout this pattern uses is:
+
+* `src/modules/index.js` the root file for the Redux store and root reducer
+* `src/modules/<module>` app modules, containing components, containers, actions and reducers.
+* `src/modules/<module>/components` React components
+* `src/modules/<module>/containers` React component containers
+* `src/modules/<module>/actions.ts` Redux action creators
+* `src/modules/<module>/reducer.ts` Redux reducer
 
 ## Dependencies
 
@@ -46,13 +49,17 @@ Include the devtools:
 npm install --save redux-devtools-extension
 ```
 
-### Layout
+### IDE
 
-The folder / file layout this pattern uses is:
+Any development environment should suffice. I use [Visual Studio Code](https://code.visualstudio.com).
 
-* `src/lib` generic business code
-* `src/modules` app modules, containing components, containers, actions and reducers.
-* `src/modules/<module>/components` React components
-* `src/modules/<module>/containers` React component containers
-* `src/modules/<module>/actions.ts` Redux action creators
-* `src/modules/<module>/reducer.ts` Redux reducer
+Download and install VSCode.
+
+Install extensions by going to the Extensions tab (or selecting Extensions from the View menu).
+
+Install the following extensions:
+* TSLint
+
+### Redux DevTools Extension
+
+Install the Redux DevTools for Chrome, Firefox and others by visiting http://extension.remotedev.io and following the instructions.
