@@ -24,9 +24,17 @@ The folder / file layout this pattern uses is:
 * [typescript-fsa-reducers](https://github.com/dphilipson/typescript-fsa-reducers) (type-safe reducers for flux standard actions)
 * [redux-devtools-extension](http://extension.remotedev.io) (debug Redux)
 
+## Running
+
+You can run this project by cloning the git repo, then cd into the project folder and run it using:
+
+```
+npm start
+```
+
 ## Setup
 
-This project was setup using [create-react-app](https://github.com/facebookincubator/create-react-app). You can reproduce this setup using the commands below.
+This project was setup using [create-react-app](https://github.com/facebookincubator/create-react-app). You can setup your own project using the commands below.
 
 Create the project using `create-react-app`:
 
@@ -48,6 +56,15 @@ Include the devtools:
 ```
 npm install --save redux-devtools-extension
 ```
+
+Copy the template files by copying the `modules` folder from this
+repository into your new project:
+
+```
+cp -r ../react-redux-typescript-pattern/src/modules src/
+```
+
+Then look at the `src/App.tsx` in this pattern to see how to include the example container into your project.
 
 ### IDE
 
