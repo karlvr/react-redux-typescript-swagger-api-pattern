@@ -26,7 +26,15 @@ The folder / file layout this pattern uses is:
 
 ## Running
 
-You can run this project by cloning the git repo, then cd into the project folder and run it using:
+You can run this project by cloning the git repo, then cd into the project folder.
+
+First install the required node modules:
+
+```
+npm install
+```
+
+Then run it using:
 
 ```
 npm start
