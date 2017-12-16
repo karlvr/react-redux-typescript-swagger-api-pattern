@@ -91,6 +91,32 @@ Install extensions by going to the Extensions tab (or selecting Extensions from 
 Install the following extensions:
 * TSLint
 
+There is a good tutorial on using Visual Studio Code with React [https://code.visualstudio.com/docs/nodejs/reactjs-tutorial].
+
+#### Debugging
+
+Create a file `.vscode/launch.json` with the following contents:
+
+```
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
+```
+
+Then after running `npm start`, close the browser window it creates, then go to the Debug tab in VSCode and click the Play button.
+
 ### Redux DevTools Extension
 
 Install the Redux DevTools for Chrome, Firefox and others by visiting http://extension.remotedev.io and following the instructions.
