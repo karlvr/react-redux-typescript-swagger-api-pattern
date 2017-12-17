@@ -6,11 +6,18 @@ that pattern first for an introduction to the approach.
 
 ### Layout
 
-We add an `api` module:
+We add an `auth` module and an `api` module:
 
+* `src/modules/auth` the auth module
 * `src/modules/api` the root file for the API module
-* `src/modules/api/actions.ts` Redux action creators
-* `src/modules/api/sagas.ts` Sagas that provide the guts of the API interactions
+
+Within each of these modules we follow the sample template layout as in the original pattern, with the addition
+of:
+
+* `functions.ts` module functions
+* `sagas.ts` async redux-saga code
+* `selectors.ts` Redux state selectors
+* `types.ts` module type definitions
 
 ## Dependencies
 
