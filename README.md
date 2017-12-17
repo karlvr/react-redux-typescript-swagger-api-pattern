@@ -1,14 +1,19 @@
-# React + Redux + Swagger Codegen API Client + TypeScript pattern
+# React + Redux + OAuth2 + Swagger Codegen API Client + TypeScript pattern
 
 This is a pattern for using React with Redux to build an app using a Swagger Codegen API Client in TypeScript. This is based upon my [pattern
 for building React + Redux + Typescript](https://github.com/karlvr/react-redux-typescript-pattern). Please refer to
 that pattern first for an introduction to the approach.
+
+For the API example we use the [Swagger Petstore](http://petstore.swagger.io/) API, which includes a Swagger API definition that we use to generate the API client, using swagger-codegen](https://github.com/swagger-api/swagger-codegen).
+
+We also include an OAuth 2 authentication example. Note that this is independent of the API example!
 
 ### Layout
 
 We add an `auth` module and an `api` module:
 
 * `src/modules/auth` the auth module
+* `src/modules/petstore` an example module that displays a list of pets, and interacts with the API.
 * `src/modules/api` the root file for the API module
 
 Within each of these modules we follow the sample template layout as in the original pattern, with the addition
@@ -61,7 +66,7 @@ npm install --save redux-saga
 
 ### API
 
-This pattern uses the [Swagger Petstore](http://petstore.swagger.io/) example API to demonstrate using [swagger-codegen](https://github.com/swagger-api/swagger-codegen) to generate an API module, and to use it with redux-offline.
+This pattern uses the [Swagger Petstore](http://petstore.swagger.io/) example API to demonstrate using [swagger-codegen](https://github.com/swagger-api/swagger-codegen) to generate an API module.
 
 We generate the API client code using an npm script, configured in `package.json`. You can run it to regenerate the API client:
 

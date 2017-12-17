@@ -4,6 +4,7 @@ import createSagaMiddleware from 'redux-saga';
 
 import rootSaga from './sagas';
 import * as auth from './auth/reducer';
+import * as petstore from './petstore/reducer';
 import { setConfig as setAuthConfig } from './auth/functions';
 
 /* Import reducers from our modules */
@@ -18,6 +19,7 @@ import * as template from '../modules/template/reducer';
 export interface RootStoreState {
     readonly template: template.StoreState;
     readonly auth: auth.StoreState;
+    readonly petstore: petstore.StoreState;
 }
 
 /**
@@ -26,6 +28,7 @@ export interface RootStoreState {
 const reducer = combineReducers<RootStoreState>({
     template: template.reducer,
     auth: auth.reducer,
+    petstore: petstore.reducer,
 });
 
 /**

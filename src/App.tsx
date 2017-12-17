@@ -6,6 +6,7 @@ import { store } from './modules/index';
 import './App.css';
 import Example from './modules/template/containers/example';
 import Login from './modules/auth/containers/Login';
+import Petstore from './modules/petstore/containers/Petstore';
 
 const logo = require('./logo.svg');
 
@@ -20,6 +21,7 @@ class App extends React.Component {
           </div>
           <Login />
           <Example />
+          <Petstore />
         </div>
       </Provider>
     );
