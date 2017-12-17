@@ -1,28 +1,23 @@
-# React + Redux + TypeScript pattern
+# React + Redux + Swagger Codegen API Client + TypeScript pattern
 
-This is a pattern for using React with Redux in TypeScript. This includes type-safety for FSA ([Flux standard actions](https://github.com/acdlite/flux-standard-action)) at the action creation and in the reducer.
-
-React Components are wrapped in a Container that connects the Component to Redux. Interfaces are declared for the component's Props in the Container; split into `Props` and `Actions` to separate properties and action callbacks.
+This is a pattern for using React with Redux to build an app using a Swagger Codegen API Client in TypeScript. This is based upon my [pattern
+for building React + Redux + Typescript](https://github.com/karlvr/react-redux-typescript-pattern). Please refer to
+that pattern first for an introduction to the approach.
 
 ### Layout
 
-The folder / file layout this pattern uses is:
+We add an `api` module:
 
-* `src/modules/index.js` the root file for the Redux store and root reducer
-* `src/modules/<module>` app modules, containing components, containers, actions and reducers.
-* `src/modules/<module>/components` React components
-* `src/modules/<module>/containers` React component containers
-* `src/modules/<module>/actions.ts` Redux action creators
-* `src/modules/<module>/reducer.ts` Redux reducer
+* `src/modules/api` the root file for the API module
+* `src/modules/api/actions.ts` Redux action creators
+* `src/modules/api/sagas.ts` Sagas that provide the guts of the API interactions
 
 ## Dependencies
 
-* [react](http://reactjs.org)
-* [redux](https://redux.js.org)
-* [react-redux](https://github.com/reactjs/react-redux) (connects React and Redux)
-* [typescript-fsa](https://github.com/aikoven/typescript-fsa) (type-safe creators for flux standard actions)
-* [typescript-fsa-reducers](https://github.com/dphilipson/typescript-fsa-reducers) (type-safe reducers for flux standard actions)
-* [redux-devtools-extension](http://extension.remotedev.io) (debug Redux)
+In addition to the base [React + Redux + Typescript pattern]((https://github.com/karlvr/react-redux-typescript-pattern)) we add
+the following dependencies:
+
+* [redux-saga](https://redux-saga.js.org) (powerful async processing)
 
 ## Running
 
@@ -34,6 +29,12 @@ First install the required node modules:
 npm install
 ```
 
+You'll then need to also install dependencies for the API module:
+
+```
+pushd gen/api && npm install && popd
+```
+
 Then run it using:
 
 ```
@@ -42,81 +43,31 @@ npm start
 
 ## Setup
 
-This project was setup using [create-react-app](https://github.com/facebookincubator/create-react-app). You can setup your own project using the commands below.
+Start with the setup of the base [React + Redux + Typescript pattern]((https://github.com/karlvr/react-redux-typescript-pattern)) and then
+continue...
 
-Install `create-react-app`:
-
-```
-npm install -g create-react-app
-```
-
-Create the project using `create-react-app`:
+Install more dependencies:
 
 ```
-create-react-app <project> --scripts-version=react-scripts-ts
-cd <project>
+npm install --save redux-saga
 ```
 
-Install dependencies:
+### API
+
+This pattern uses the [Swagger Petstore](http://petstore.swagger.io/) example API to demonstrate using [swagger-codegen](https://github.com/swagger-api/swagger-codegen) to generate an API module, and to use it with redux-offline.
+
+We generate the API client code using an npm script, configured in `package.json`. You can run it to regenerate the API client:
 
 ```
-npm install --save redux react-redux
-npm install --save-dev @types/react-redux
-npm install --save typescript-fsa-reducers typescript-fsa
+npm run swagger-codegen
 ```
 
-Include the devtools:
+Note that script runs swagger-codegen and then runs `npm install` in the resulting package, so it is ready to be used.
+
+We generate the code into the `gen/api` folder. Note that we also add `gen` to the ignore list in `tsconfig.json` so that TypeScript doesn't try to compile it as part of our code, as we will be instead be installing it as a node module.
+
+We then install this code into our project:
 
 ```
-npm install --save redux-devtools-extension
+npm install --save gen/api
 ```
-
-Copy the template files by copying the `modules` folder from this
-repository into your new project:
-
-```
-cp -r ../react-redux-typescript-pattern/src/modules src/
-```
-
-Then look at the `src/App.tsx` in this pattern to see how to include the example container into your project.
-
-### IDE
-
-Any development environment should suffice. I use [Visual Studio Code](https://code.visualstudio.com).
-
-Download and install VSCode.
-
-Install extensions by going to the Extensions tab (or selecting Extensions from the View menu).
-
-Install the following extensions:
-* TSLint
-
-There is a good tutorial on using Visual Studio Code with React [https://code.visualstudio.com/docs/nodejs/reactjs-tutorial].
-
-#### Debugging
-
-Create a file `.vscode/launch.json` with the following contents:
-
-```
-{
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "chrome",
-            "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:3000",
-            "webRoot": "${workspaceFolder}"
-        }
-    ]
-}
-```
-
-Then after running `npm start`, close the browser window it creates, then go to the Debug tab in VSCode and click the Play button.
-
-### Redux DevTools Extension
-
-Install the Redux DevTools for Chrome, Firefox and others by visiting http://extension.remotedev.io and following the instructions.
