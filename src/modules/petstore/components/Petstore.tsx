@@ -40,8 +40,17 @@ export default class Example extends React.Component<Props & Actions, State> {
         return (
             <div>
                 <h1>Petstore</h1>
-                <button onClick={this.props.loadPets}>Reload</button>
-                <button onClick={this.addPet}>Add Pet</button>
+                <p>
+                    <button onClick={this.props.loadPets}>Reload</button>
+                    &nbsp;
+                    <button onClick={this.addPet}>Add Pet</button>
+                    {this.props.saving && (
+                        <span>Saving&hellip;</span>
+                    )}
+                </p>
+                {this.props.error && (
+                    <p style={{color: 'red'}}>{this.props.error.message}</p>
+                )}
                 {!!pets.length && (
                     <table style={{margin: '0 auto', width: '60%'}}>
                         <thead>

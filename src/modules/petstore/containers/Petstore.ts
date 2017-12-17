@@ -20,6 +20,8 @@ import { Pet } from '../types';
  */
 export interface Props {
     pets: ReadonlyArray<Pet>;
+    saving: boolean;
+    error?: Error;
 }
 
 /**
@@ -35,16 +37,18 @@ export interface Actions {
 const mapStateToProps = ({ petstore }: RootStoreState): Props => {
     return {
         pets: petstore.pets,
+        saving: petstore.saving,
+        error: petstore.error,
     };
 };
 
 /** Populate the Actions with the callbacks for the component. */
 const mapDispatchToProps = (dispatch: Dispatch<{}>): Actions => ({
     loadPets: () => {
-        dispatch(actions.requestPets());
+        dispatch(actions.requestPets.started(undefined));
     },
     onAddPet: (name) => {
-        dispatch(actions.addPet({
+        dispatch(actions.addPet.started({
             name,
             photoUrls: [''],
         }));

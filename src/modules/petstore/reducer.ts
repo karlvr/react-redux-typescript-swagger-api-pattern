@@ -12,6 +12,8 @@ import { Pet } from './types';
  */
 export interface StoreState {
     readonly pets: ReadonlyArray<Pet>;
+    readonly error?: Error;
+    readonly saving: boolean;
 }
 
 /**
@@ -19,20 +21,32 @@ export interface StoreState {
  */
 const INITIAL_STATE: StoreState = {
     pets: [],
+    saving: false,
 };
 
 /**
  * Reducer function for this module.
  */
 export const reducer = reducerWithInitialState(INITIAL_STATE)
-    /* Reducer function for the exampleAction that returns a new state using an implicit return. */
-    .case(actions.receivePets, (state, pets) => ({
-        ...state, pets
+    .case(actions.requestPets.started, (state) => ({
+        ...state, pets: [],
     }))
-    .case(actions.addPet, (state, payload) => {
+    .case(actions.requestPets.done, (state, { result: pets }) => ({
+        ...state, pets,
+    }))
+    .case(actions.requestPets.failed, (state, { error }) => ({
+        ...state, error,
+    }))
+    .case(actions.addPet.started, (state, payload) => {
         /* Add the new pet to our state (at the start) so it appears optimistically. */
         return {
-            ...state, pets: [ payload, ...state.pets ]
+            ...state, pets: [ payload, ...state.pets ], saving: true, error: undefined,
         };
     })
+    .case(actions.addPet.done, (state, { result }) => ({
+        ...state, saving: false,
+    }))
+    .case(actions.addPet.failed, (state, { error }) => ({
+        ...state, saving: false, error,
+    }))
     ;

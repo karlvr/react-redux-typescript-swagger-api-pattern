@@ -7,18 +7,13 @@ import { Pet } from './types';
  */
 const actionCreator = actionCreatorFactory('Petstore');
 
-export type ReceivePetsPayload = Array<Pet>;
-export type ReceivePetsAction = Action<ReceivePetsPayload>;
-export const receivePets = actionCreator<ReceivePetsPayload>('RECEIVE_PETS');
-
-export const requestPetsFailed = actionCreator('REQUEST_PETS_FAILED');
-
+export type RequestPetsSuccessPayload = Array<Pet>;
 export type RequestPetsAction = Action<undefined>;
-export const requestPets = actionCreator('REQUEST_PETS');
+export const requestPets = actionCreator.async<undefined, RequestPetsSuccessPayload, Error>('REQUEST_PETS');
 
 export interface AddPetPayload {
     name: string;
     photoUrls: Array<string>;
 }
 export type AddPetAction = Action<AddPetPayload>;
-export const addPet = actionCreator<AddPetPayload>('ADD_PET');
+export const addPet = actionCreator.async<AddPetPayload, {}, Error>('ADD_PET');
