@@ -26,7 +26,7 @@ of:
 
 ## Dependencies
 
-In addition to the base [React + Redux + Typescript pattern]((https://github.com/karlvr/react-redux-typescript-pattern)) we add
+In addition to the base [React + Redux + Typescript pattern](https://github.com/karlvr/react-redux-typescript-pattern) we add
 the following dependencies:
 
 * [redux-saga](https://redux-saga.js.org) (powerful async processing)
@@ -55,7 +55,7 @@ npm start
 
 ## Setup
 
-Start with the setup of the base [React + Redux + Typescript pattern]((https://github.com/karlvr/react-redux-typescript-pattern)) and then
+Start with the setup of the base [React + Redux + Typescript pattern](https://github.com/karlvr/react-redux-typescript-pattern) and then
 continue...
 
 Install more dependencies:
