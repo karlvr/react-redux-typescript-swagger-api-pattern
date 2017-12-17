@@ -10,6 +10,7 @@
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-saga": "^0.16.0",
+    "typescript-fetch-api": "file:gen/api",
     "typescript-fsa": "^2.5.0",
     "typescript-fsa-reducers": "^0.4.5"
   },
