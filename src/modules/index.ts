@@ -3,6 +3,8 @@ import { devToolsEnhancer } from 'redux-devtools-extension/logOnlyInProduction';
 import createSagaMiddleware from 'redux-saga';
 
 import rootSaga from './sagas';
+import * as auth from './auth/reducer';
+import { setConfig as setAuthConfig } from './auth/functions';
 
 /* Import reducers from our modules */
 import * as template from '../modules/template/reducer';
@@ -15,7 +17,7 @@ import * as template from '../modules/template/reducer';
  */
 export interface RootStoreState {
     readonly template: template.StoreState;
-    // readonly another: another.StoreState;
+    readonly auth: auth.StoreState;
 }
 
 /**
@@ -23,7 +25,7 @@ export interface RootStoreState {
  */
 const reducer = combineReducers<RootStoreState>({
     template: template.reducer,
-    // another: another.reducer,
+    auth: auth.reducer,
 });
 
 /**
@@ -49,3 +51,10 @@ export const store = createStore<RootStoreState>(reducer, enhancers);
 
 /* Run the root saga */
 sagaMiddleware.run(rootSaga);
+
+/* Create the authentication config */
+setAuthConfig({
+    apiBase: '/api',
+    clientId: 'test',
+    clientSecret: 'secret',
+});
