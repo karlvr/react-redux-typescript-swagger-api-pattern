@@ -50,7 +50,7 @@ const enhancers = compose(
  * Create the store. We do not include an initial state, as each of the module / duck
  * reducers includes its own initial state.
  */
-export const store = createStore<RootStoreState>(reducer, enhancers);
+export const store = createStore<RootStoreState, any, any, any>(reducer, enhancers);
 
 /* Run the root saga */
 sagaMiddleware.run(rootSaga);

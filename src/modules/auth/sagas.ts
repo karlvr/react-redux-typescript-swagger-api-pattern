@@ -8,8 +8,8 @@ import { take, call, put, race, select } from 'redux-saga/effects';
 import * as actions from './actions';
 import { authenticate, refresh } from './functions';
 import { LoginRequestPayload } from './actions';
-import { SagaIterator, delay } from 'redux-saga';
-import { RootStoreState } from '../index';
+import { SagaIterator } from 'redux-saga';
+import { delay } from 'redux-saga/effects';
 import { AccessToken } from './types';
 
 import { accessTokenSelector } from './selectors';
@@ -56,12 +56,12 @@ function* loggedInSaga(): SagaIterator {
 
 /** Yields a boolean result, whether there is a user logged in or not. */
 function* loggedIn(): SagaIterator {
-    let accessToken = yield select<RootStoreState>(accessTokenSelector);
+    let accessToken = yield select(accessTokenSelector);
     return accessToken !== undefined;
 }
 
 function* refreshToken(): SagaIterator {
-    let accessToken = (yield select<RootStoreState>(accessTokenSelector)) as AccessToken;
+    let accessToken: AccessToken = (yield select(accessTokenSelector)) as AccessToken;
     if (!accessToken) {
         throw new Error('Not logged in');
     }

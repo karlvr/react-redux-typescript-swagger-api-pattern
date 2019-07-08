@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
-
 import { store } from './modules/index';
-
 import './App.css';
 import Example from './modules/template/containers/example';
 import Login from './modules/auth/containers/Login';
