@@ -8,7 +8,7 @@ import Component from '../components/Petstore';
 import { connect } from 'react-redux';
 
 /* Import RootStoreState */
-import { RootStoreState } from '../../index';
+import { RootStoreState } from 'modules/index';
 
 /* Import module files */
 import * as actions from '../actions';
