@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { store } from './modules/index';
 import './App.css';
-import Example from './modules/template/containers/example';
+import { store } from './modules/index';
 import Login from './modules/auth/containers/Login';
 import Petstore from './modules/petstore/containers/Petstore';
+import Example from './modules/template/containers/example';
 
 const logo = require('./logo.svg');
 

@@ -1,5 +1,5 @@
 {
-    "extends": ["tslint-react"],
+    "extends": [ "tslint-react" ],
     "rules": {
         "align": [
             true,
@@ -25,13 +25,19 @@
         "max-line-length": [ true, 120 ],
         "member-ordering": [
             true,
-            "public-before-private",
-            "static-before-instance",
-            "variables-before-functions"
+            {
+                "order": [
+                    "public-before-private",
+                    "static-before-instance",
+                    "variables-before-functions"
+                ],
+                "alphabetize": true
+            }
         ],
         "no-any": true,
         "no-arg": true,
         "no-bitwise": true,
+        "no-consecutive-blank-lines": true,
         "no-console": [
             true,
             "log",
@@ -42,7 +48,6 @@
             "timeEnd",
             "trace"
         ],
-        "no-consecutive-blank-lines": true,
         "no-construct": true,
         "no-debugger": true,
         "no-duplicate-variable": true,

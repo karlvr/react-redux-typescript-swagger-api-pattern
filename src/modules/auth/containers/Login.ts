@@ -1,17 +1,10 @@
 /**
  * Container template for a component.
  */
-
- /* Import the component from the component path */
-import Component from '../components/Login';
-
+import { RootStoreState } from 'modules/index';
 import { connect } from 'react-redux';
-
-/* Import RootStoreState */
-import { RootStoreState } from '../../index';
-
-/* Import module files */
 import * as actions from '../actions';
+import Component from '../components/Login';
 import { accessTokenSelector } from '../selectors';
 
 /**

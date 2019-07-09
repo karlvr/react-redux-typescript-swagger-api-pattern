@@ -1,7 +1,6 @@
-import { takeEvery, call, put } from 'redux-saga/effects';
 import { SagaIterator } from 'redux-saga';
+import { takeEvery, call, put } from 'redux-saga/effects';
 import * as Api from 'typescript-fetch-api';
-
 import * as petstore from '../petstore/actions';
 
 const pets = new Api.PetApi();
