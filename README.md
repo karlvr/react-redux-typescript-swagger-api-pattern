@@ -8,6 +8,8 @@ For the API example we use the [Swagger Petstore](http://petstore.swagger.io/) A
 
 We also include an OAuth 2 authentication example. Note that this is independent of the API example!
 
+You can also read the [original create-react-app README](README-CRA.md)
+
 ### Layout
 
 We add an `auth` module and an `api` module:
@@ -66,15 +68,19 @@ npm install --save redux-saga
 
 ### API
 
-This pattern uses the [Swagger Petstore](http://petstore.swagger.io/) example API to demonstrate using [swagger-codegen](https://github.com/swagger-api/swagger-codegen) to generate an API module.
-
-We generate the API client code using an npm script, configured in `package.json`. You can run it to regenerate the API client:
+This pattern uses the [Swagger Petstore](http://petstore.swagger.io/) example API to demonstrate using [openapi-generator](https://github.com/openapitools/openapi-generator) to generate an API module.
 
 ```
-npm run swagger-codegen
+npm install --save-dev @openapitools/openapi-generator-cli
 ```
 
-Note that script runs swagger-codegen and then runs `npm install` in the resulting package, so it is ready to be used.
+We generate the API client code using an npm script, configured in `package.json` and using configuration from `api.json`. You can run it to regenerate the API client:
+
+```
+npm run api
+```
+
+Note that script runs openapi-generator and then runs `npm install` in the resulting package, so it is ready to be used.
 
 We generate the code into the `gen/api` folder. Note that we also add `gen` to the ignore list in `tsconfig.json` so that TypeScript doesn't try to compile it as part of our code, as we will be instead be installing it as a node module.
 

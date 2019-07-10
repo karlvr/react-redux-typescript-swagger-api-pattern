@@ -7,20 +7,20 @@
  * Properties are marked as readonly because we store the access token in the Redux state.
  */
 export interface AccessToken {
-    readonly access_token: string;
-    readonly token_type: string;
-    readonly expires_in: number;
-    readonly refresh_token: string;
+	readonly access_token: string
+	readonly token_type: string
+	readonly expires_in: number
+	readonly refresh_token: string
 
-    /** The timestamp (ms) at which we intend to refresh our access token. */
-    readonly refreshAt: number;
+	/** The timestamp (ms) at which we intend to refresh our access token. */
+	readonly refreshAt: number
 }
 
 /**
  * Configuration for the OAuth 2 functions.
  */
 export interface Config {
-    readonly apiBase: string;
-    readonly clientId: string;
-    readonly clientSecret: string;
+	readonly apiBase: string
+	readonly clientId: string
+	readonly clientSecret: string
 }

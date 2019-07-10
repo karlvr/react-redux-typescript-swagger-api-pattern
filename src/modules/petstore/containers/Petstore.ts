@@ -2,26 +2,27 @@
  * Container template for a component.
  */
 
- /* Import the component from the component path */
-import Component from '../components/Petstore';
+/* Import the component from the component path */
+import Component from '../components/Petstore'
 
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
+import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
 
 /* Import RootStoreState */
-import { RootStoreState } from '../../index';
+import { RootStoreState } from 'modules/root'
 
 /* Import module files */
-import * as actions from '../actions';
-import { Pet } from '../types';
+import * as actions from '../actions'
+import { Pet } from '../types'
+import { Action } from 'typescript-fsa'
 
 /**
  * Interface for properties that the container passes to the component.
  */
 export interface Props {
-    pets: ReadonlyArray<Pet>;
-    saving: boolean;
-    error?: Error;
+	pets: ReadonlyArray<Pet>
+	saving: boolean
+	error?: Error
 }
 
 /**
@@ -29,30 +30,30 @@ export interface Props {
  * The component's `this.props` is typed `Props & Actions`.
  */
 export interface Actions {
-    loadPets: () => void;
-    onAddPet: (name: string) => void;
+	loadPets: () => void
+	onAddPet: (name: string) => void
 }
 
 /** Populate the Props from the store state. */
 const mapStateToProps = ({ petstore }: RootStoreState): Props => {
-    return {
-        pets: petstore.pets,
-        saving: petstore.saving,
-        error: petstore.error,
-    };
-};
+	return {
+		pets: petstore.pets,
+		saving: petstore.saving,
+		error: petstore.error,
+	}
+}
 
 /** Populate the Actions with the callbacks for the component. */
-const mapDispatchToProps = (dispatch: Dispatch<{}>): Actions => ({
-    loadPets: () => {
-        dispatch(actions.requestPets.started(undefined));
-    },
-    onAddPet: (name) => {
-        dispatch(actions.addPet.started({
-            name,
-            photoUrls: [''],
-        }));
-    },
-});
+const mapDispatchToProps = (dispatch: Dispatch<Action<unknown>>): Actions => ({
+	loadPets: () => {
+		dispatch(actions.requestPets.started(undefined))
+	},
+	onAddPet: (name) => {
+		dispatch(actions.addPet.started({
+			name,
+			photoUrls: [''],
+		}))
+	},
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Component);
+export default connect(mapStateToProps, mapDispatchToProps)(Component)

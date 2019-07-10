@@ -1,31 +1,36 @@
-import * as React from 'react';
-import { Provider } from 'react-redux';
+import React from 'react'
+import logo from './logo.svg'
+import './App.css'
+import { Provider } from 'react-redux'
+import { getStore } from 'modules/root'
+import Login from 'modules/auth/containers/Login'
+import Petstore from 'modules/petstore/containers/Petstore'
+import Example from 'modules/template/containers/example'
 
-import { store } from './modules/index';
-
-import './App.css';
-import Example from './modules/template/containers/example';
-import Login from './modules/auth/containers/Login';
-import Petstore from './modules/petstore/containers/Petstore';
-
-const logo = require('./logo.svg');
-
-class App extends React.Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <div className="App">
-          <div className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h2>Welcome to React</h2>
-          </div>
-          <Login />
-          <Example />
-          <Petstore />
-        </div>
-      </Provider>
-    );
-  }
+const App: React.FC = () => {
+	return (
+		<Provider store={getStore()}>
+			<div className="App">
+				<header className="App-header">
+					<img src={logo} className="App-logo" alt="logo" />
+					<p>
+            Edit <code>src/App.tsx</code> and save to reload.
+					</p>
+					<a
+						className="App-link"
+						href="https://reactjs.org"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+            Learn React
+					</a>
+					<Login />
+					<Example />
+					<Petstore />
+				</header>
+			</div>
+		</Provider>
+	)
 }
 
-export default App;
+export default App

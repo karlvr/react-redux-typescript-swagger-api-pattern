@@ -4,88 +4,84 @@
  * Note that this file has a `.tsx` suffix, as it contains React elements.
  */
 
-import * as React from 'react';
-import { Props, Actions } from '../containers/Login';
-import { ChangeEvent } from 'react';
+import * as React from 'react'
+import { Props, Actions } from '../containers/Login'
+import { ChangeEvent } from 'react'
 
 /**
  * Interface for private internal component state.
  */
 interface State {
-    username: string;
-    password: string;
+	username: string
+	password: string
 }
 
 /**
  * The initial state for our internal component state.
  */
 const INITIAL_STATE: State = {
-    username: '',
-    password: '',
-};
+	username: '',
+	password: '',
+}
 
 export default class Example extends React.Component<Props & Actions, State> {
 
-    state = INITIAL_STATE;
+	public state = INITIAL_STATE
 
-    /**
-     * An ES6 function definition. We define the function like this, rather than as per
-     * the render() function below so that it binds `this` automatically.
-     */
-    doLogin = () => {
-        this.props.onLogin(this.state.username, this.state.password);
-    }
+	public render() {
+		const { loggedIn, error } = this.props
 
-    doLogout = () => {
-        this.props.onLogout();
-    }
+		return (
+			<div>
+				{loggedIn ? (
+					<div>
+						<p>Logged in</p>
+						<button onClick={this.doLogout}>Logout</button>
+					</div>
+				) : (
+					<div>
+						<p>
+							<input
+								type="text"
+								name="username"
+								placeholder="Username"
+								onChange={this.handleUsername}
+								value={this.state.username}
+							/>
+							<input
+								type="password"
+								name="password"
+								onChange={this.handlePassword}
+								defaultValue={this.state.password}
+							/>
+							<button onClick={this.doLogin}>Login</button>
+						</p>
+					</div>
+				)}
+				{error && (
+					<div>{error.message}</div>
+				)}
+			</div>
+		)
+	}
 
-    handleUsername = (e: ChangeEvent<HTMLInputElement>) => {
-        this.setState({
-            username: e.target.value,
-        });
-    }
+	private doLogin = () => {
+		this.props.onLogin(this.state.username, this.state.password)
+	}
 
-    handlePassword = (e: ChangeEvent<HTMLInputElement>) => {
-        this.setState({
-            password: e.target.value,
-        });
-    }
+	private doLogout = () => {
+		this.props.onLogout()
+	}
 
-    render() {
-        const { loggedIn, error } = this.props;
+	private handleUsername = (e: ChangeEvent<HTMLInputElement>) => {
+		this.setState({
+			username: e.target.value,
+		})
+	}
 
-        return (
-            <div>
-                {loggedIn ? (
-                    <div>
-                        <p>Logged in</p>
-                        <button onClick={this.doLogout}>Logout</button>
-                    </div>
-                ) : (
-                        <div>
-                            <p>
-                                <input
-                                    type="text"
-                                    name="username"
-                                    placeholder="Username"
-                                    onChange={this.handleUsername}
-                                    value={this.state.username}
-                                />
-                                <input
-                                    type="password"
-                                    name="password"
-                                    onChange={this.handlePassword}
-                                    defaultValue={this.state.password}
-                                />
-                                <button onClick={this.doLogin}>Login</button>
-                            </p>
-                        </div>
-                    )}
-                {error && (
-                    <div>{error.message}</div>
-                )}
-            </div>
-        );
-    }
+	private handlePassword = (e: ChangeEvent<HTMLInputElement>) => {
+		this.setState({
+			password: e.target.value,
+		})
+	}
 }

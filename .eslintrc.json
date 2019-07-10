@@ -1,0 +1,18 @@
+{
+	"extends": ["react-app", "plugin:@typescript-eslint/recommended"],
+	"rules": {
+		"comma-dangle": ["warn", "always-multiline"],
+		// https://github.com/typescript-eslint/typescript-eslint/blob/v1.6.0/packages/eslint-plugin/docs/rules/indent.md
+		"indent": "off",
+		"@typescript-eslint/indent": ["warn", "tab"],
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"@typescript-eslint/explicit-member-accessibility": "warn",
+		"@typescript-eslint/member-delimiter-style": ["warn", { "multiline": { "delimiter": "none" } } ],
+		"@typescript-eslint/member-ordering": "warn",
+		"@typescript-eslint/no-empty-interface": "off",
+		"@typescript-eslint/no-non-null-assertion": "warn",
+		"@typescript-eslint/no-use-before-define": ["error", "nofunc"],
+		"@typescript-eslint/no-var-requires": "off",
+		"semi": ["warn", "never"]
+	}
+}
