@@ -4,7 +4,7 @@ This is a pattern for using React with Redux to build an app using a Swagger Cod
 for building React + Redux + Typescript](https://github.com/karlvr/react-redux-typescript-pattern). Please refer to
 that pattern first for an introduction to the approach.
 
-For the API example we use the [Swagger Petstore](http://petstore.swagger.io/) API, which includes a Swagger API definition that we use to generate the API client, using [swagger-codegen](https://github.com/swagger-api/swagger-codegen).
+For the API example we use the [Swagger Petstore](http://petstore.swagger.io/) API, which includes a Swagger API definition that we use to generate the API client, using [openapi-generator](https://github.com/openapitools/openapi-generator).
 
 We also include an OAuth 2 authentication example. Note that this is independent of the API example!
 
