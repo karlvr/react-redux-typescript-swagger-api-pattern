@@ -5,7 +5,7 @@
  */
 
 import * as React from 'react'
-import { Props, Actions } from '../containers/example'
+import { Props, Actions } from '../containers/Example'
 
 /**
  * Interface for private internal component state.

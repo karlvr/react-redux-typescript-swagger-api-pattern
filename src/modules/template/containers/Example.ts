@@ -3,7 +3,7 @@
  */
 
 /* Import the component from the component path */
-import Component from '../components/example'
+import Component from '../components/Example'
 
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
