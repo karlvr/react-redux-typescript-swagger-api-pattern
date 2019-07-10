@@ -6,7 +6,6 @@
 
 import * as React from 'react'
 import { Props, Actions } from '../containers/Login'
-import { ChangeEvent } from 'react'
 
 /**
  * Interface for private internal component state.
@@ -73,13 +72,13 @@ export default class Example extends React.Component<Props & Actions, State> {
 		this.props.onLogout()
 	}
 
-	private handleUsername = (e: ChangeEvent<HTMLInputElement>) => {
+	private handleUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
 		this.setState({
 			username: e.target.value,
 		})
 	}
 
-	private handlePassword = (e: ChangeEvent<HTMLInputElement>) => {
+	private handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
 		this.setState({
 			password: e.target.value,
 		})
