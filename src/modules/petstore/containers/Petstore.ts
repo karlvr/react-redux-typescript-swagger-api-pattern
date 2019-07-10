@@ -6,7 +6,7 @@
 import Component from '../components/Petstore'
 
 import { connect } from 'react-redux'
-import { Dispatch } from 'redux'
+import { Dispatch, Action } from 'redux'
 
 /* Import RootStoreState */
 import { RootStoreState } from 'modules/root'
@@ -14,7 +14,6 @@ import { RootStoreState } from 'modules/root'
 /* Import module files */
 import * as actions from '../actions'
 import { Pet } from '../types'
-import { Action } from 'typescript-fsa'
 
 /**
  * Interface for properties that the container passes to the component.
@@ -44,7 +43,7 @@ const mapStateToProps = ({ petstore }: RootStoreState): Props => {
 }
 
 /** Populate the Actions with the callbacks for the component. */
-const mapDispatchToProps = (dispatch: Dispatch<Action<unknown>>): Actions => ({
+const mapDispatchToProps = (dispatch: Dispatch<Action>): Actions => ({
 	loadPets: () => {
 		dispatch(actions.requestPets.started(undefined))
 	},
