@@ -20,7 +20,7 @@ import { Action } from 'typescript-fsa'
  * Interface for properties that the container passes to the component.
  */
 export interface Props {
-	pets: ReadonlyArray<Pet>
+	pets: DeepReadonly<Pet[]>
 	saving: boolean
 	error?: Error
 }

@@ -1,35 +1,13 @@
-import { createStore, combineReducers, compose, applyMiddleware, StoreEnhancer } from 'redux'
+import { createStore, compose, applyMiddleware, StoreEnhancer } from 'redux'
 import { devToolsEnhancer } from 'redux-devtools-extension/logOnlyInProduction'
 import createSagaMiddleware from 'redux-saga'
 
 import rootSaga from './sagas'
-import * as auth from 'modules/auth/reducer'
-import * as petstore from 'modules/petstore/reducer'
 import { setConfig as setAuthConfig } from 'modules/auth/functions'
 
-/* Import reducers from our modules */
-import * as template from 'modules/template/reducer'
-// import * as another from '../modules/another/reducers';
+import { StoreState as RootStoreState, reducer } from './reducer'
 
-/**
- * The root store state. Include sub-states for all of the modules / ducks.
- * All of these should be annotated `readonly`, as should everything down
- * the tree of StoreState interfaces, and their contents.
- */
-export interface RootStoreState {
-	readonly template: template.StoreState
-	readonly auth: auth.StoreState
-	readonly petstore: petstore.StoreState
-}
-
-/**
- * The root reducer, combines reducers for all of the modules / ducks.
- */
-const reducer = combineReducers<RootStoreState>({
-	template: template.reducer,
-	auth: auth.reducer,
-	petstore: petstore.reducer,
-})
+export type RootStoreState = RootStoreState
 
 /**
  * Create the redux-saga middleware.
