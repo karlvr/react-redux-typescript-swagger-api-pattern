@@ -45,10 +45,10 @@ export default class Example extends React.Component<Props & Actions, State> {
 					)}
 				</p>
 				{this.props.error && (
-					<p style={{color: 'red'}}>{this.props.error.message}</p>
+					<p style={{ color: 'red' }}>{this.props.error.message}</p>
 				)}
 				{!!pets.length && (
-					<table style={{margin: '0 auto', width: '60%'}}>
+					<table style={{ margin: '0 auto', width: '60%' }}>
 						<thead>
 							<tr>
 								<th>Pet</th>

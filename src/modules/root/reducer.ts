@@ -1,4 +1,4 @@
-import { combineReducers } from "redux"
+import { combineReducers } from 'redux'
 
 /* Import reducers from our modules */
 import * as template from 'modules/template/reducer'
