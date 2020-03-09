@@ -5,9 +5,9 @@ import createSagaMiddleware from 'redux-saga'
 import rootSaga from './sagas'
 import { setConfig as setAuthConfig } from 'modules/auth/functions'
 
-import { StoreState as RootStoreState, reducer } from './reducer'
+import { StoreState as _RootStoreState, reducer } from './reducer'
 
-export type RootStoreState = RootStoreState
+export type RootStoreState = _RootStoreState
 
 /**
  * Create the redux-saga middleware.

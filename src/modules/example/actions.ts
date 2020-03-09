@@ -3,7 +3,7 @@ import actionCreatorFactory from 'typescript-fsa'
 /**
  * The action creator for this module. Note that it contains the module name.
  */
-const actionCreator = actionCreatorFactory('Template')
+const actionCreator = actionCreatorFactory('Example')
 
 /* An example action with an interface as its payload. */
 export interface ExampleActionPayload {
