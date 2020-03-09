@@ -5,7 +5,7 @@ import Example from 'modules/example/components/Example'
 import { Provider } from 'react-redux'
 import { getStore } from 'modules/root'
 import Login from 'modules/auth/containers/Login'
-import Petstore from 'modules/petstore/containers/Petstore'
+import Petstore from 'modules/petstore/components/Petstore'
 
 const App: React.FC = () => {
 	return (

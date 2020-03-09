@@ -5,72 +5,70 @@
  */
 
 import * as React from 'react'
-import { Props, Actions } from '../containers/Petstore'
+import { useDispatch, useSelector } from 'react-redux'
+import { addPet, requestPets } from '../actions'
+import * as s from '../selectors'
 
-/**
- * Interface for private internal component state.
- */
-interface State {
-    
-}
+const Example: React.FC = () => {
+	const dispatch = useDispatch()
 
-/**
- * The initial state for our internal component state.
- */
-const INITIAL_STATE: State = {
-    
-}
+	/* Load pets when the component is mounted */
+	React.useEffect(() => {
+		dispatch(requestPets.started(undefined))
+	}, [dispatch])
 
-export default class Example extends React.Component<Props & Actions, State> {
+	const saving = useSelector(s.selectSaving)
+	const error = useSelector(s.selectError)
+	const pets = useSelector(s.selectPets)
 
-	public state = INITIAL_STATE;
-
-	public componentDidMount() {
-		// TODO this is run before rehydrate
-		this.props.loadPets()
+	function onLoadPets(evt: React.MouseEvent) {
+		evt.preventDefault()
+		dispatch(requestPets.started(undefined))
 	}
 
-	public render() {
-		const { pets } = this.props
+	function onAddPet(evt: React.MouseEvent) {
+		evt.preventDefault()
+		dispatch(addPet.started({
+			name: 'test',
+			photoUrls: [''],
+		}))
+	}
 
-		return (
-			<div>
-				<h1>Petstore</h1>
-				<p>
-					<button onClick={this.props.loadPets}>Reload</button>
+	return (
+		<div>
+			<h1>Petstore</h1>
+			<p>
+				<button onClick={onLoadPets}>Reload</button>
                     &nbsp;
-					<button onClick={this.addPet}>Add Pet</button>
-					{this.props.saving && (
-						<span>Saving&hellip;</span>
-					)}
-				</p>
-				{this.props.error && (
-					<p style={{ color: 'red' }}>{this.props.error.message}</p>
+				<button onClick={onAddPet}>Add Pet</button>
+				{saving && (
+					<span>Saving&hellip;</span>
 				)}
-				{!!pets.length && (
-					<table style={{ margin: '0 auto', width: '60%' }}>
-						<thead>
-							<tr>
-								<th>Pet</th>
-								<th>Status</th>
-							</tr>
-						</thead>
-						<tbody>
-							{pets.filter((pet, index) => index < 20)
-								.map((pet, index) => 
-									<tr key={index}>
-										<td>{pet.name}</td>
-										<td>{pet.status}</td>
-									</tr>
-								)}
-						</tbody>
-					</table>
-				)}
-			</div>
-		)
-	}
-
-	private addPet = () => {
-		this.props.onAddPet('test')
-	}
+			</p>
+			{error && (
+				<p style={{ color: 'red' }}>{error.message}</p>
+			)}
+			{!!pets.length && (
+				<table style={{ margin: '0 auto', width: '60%' }}>
+					<thead>
+						<tr>
+							<th>Pet</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						{pets.filter((pet, index) => index < 20)
+							.map((pet, index) => (
+								<tr key={index}>
+									<td>{pet.name}</td>
+									<td>{pet.status}</td>
+								</tr>
+							))}
+					</tbody>
+				</table>
+			)}
+		</div>
+	)
 }
+
+export default Example
